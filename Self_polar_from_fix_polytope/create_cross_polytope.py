@@ -14,7 +14,7 @@ def vert_write(file_name,parametr,v):
 		vertex_file.write("\n")
 	return
 
-d = 3
+d = 6
 v = np.zeros((4*d, 2*d)).astype(int)
 for i in range(2*d):
 	v[2*i][i] = 1

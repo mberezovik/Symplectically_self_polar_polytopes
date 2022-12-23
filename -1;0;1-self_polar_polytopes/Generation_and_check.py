@@ -4,7 +4,7 @@ from fractions import Fraction
 import numpy as np
 import os
 
-d = 2 #half_dimension 
+d = 3 #half_dimension 
 
 def omega(v, w):
 	sum = 0
@@ -60,7 +60,7 @@ def recurtion_enum(omega_matrix, v, number_of_taken_vertices, list_of_ban, deep)
 			os.system('polymake --script Volume.pl')
 			with open('volume.txt') as volume_now:
 				vol = Fraction(volume_now.read())
-			volume_rec = open('vol_rec_4.txt', 'a')
+			volume_rec = open('vol_rec_6.txt', 'a')
 			with open('vertnum_orig.txt') as f:
 				real_vert = (f.read()).rstrip('\n')
 			volume_rec.write(real_vert)			
