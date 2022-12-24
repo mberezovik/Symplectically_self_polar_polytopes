@@ -29,3 +29,5 @@ This project has 4 different programms for computations connected with sympelcti
 4. **Self_polar_from_fix_polytope**:
     - This programm generates symplectically self-polar polytopes starting from fixed polytope.
     - Specify the vertices of your polytope in the file "Vertices.txt" and run programm by run file "create_self_polar.py"
+
+If you have additional question, please ask me through my email: m.berezovik@gmail.com
