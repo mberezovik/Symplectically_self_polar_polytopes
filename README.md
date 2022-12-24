@@ -13,7 +13,7 @@ This project has 4 different programms for computations connected with sympelcti
 
     - This programm generates symplectically self-polar polytopes starting from polytope in unit euclidian ball.
     - There are following editable parameters:
-      - Number of vertices of initial polytope. If you wanna generate initial centrally-symmetric polytope with $2k$ vertices. Change the second parametr of "rand_sphere" function in file "Rand.pl" to $k+1$.
+      - Number of vertices of initial polytope. If you wanna generate initial centrally-symmetric polytope from $2k$ centrally-simmetric points. Change the second parametr of "rand_sphere" function in file "Rand.pl" to $k+1$.
       - Dimension. If you wanna generate polytopes in dimension $2d$ change first oarametr of "rand_sphere" function in file "Rand.pl" to $2d$.
       - Number of generated polytopes. Change number of "for" cycle in file "cycle.py"
     - Output file pointed in the file "create_self_polar.py" and denoted by "volume_rec".
