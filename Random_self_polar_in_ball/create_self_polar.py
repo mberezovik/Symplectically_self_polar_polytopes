@@ -93,60 +93,40 @@ def rand_homothety_and_symmetrisize(file_in,file_out):
 	vert_write(file_out,'w',v)
 	return
 
-# def rand_homothety_and_symmetrisize(file_in,file_out):
-# 	v = vert_read(file_in)
-# 	k = len(v)
-# 	for i in range(k):
-# 		temp = []
-# 		for j in range(len(v[i])):
-# 			temp.append(-v[i][j])
-# 		v.append(temp)
-# 	vert_write(file_out,'w',v)
-# 	return
-
-# Non random case
-
-
-# os.system('polymake --script Polar.pl')
-# v = vert_read('poly_polar_vert.txt')
-# vert_write('Vertices.txt','w', v)
-# while(omega_check(v) != True):
-# 	add_vert = polar_add(v)
-# 	add_vert = J_multiplication(add_vert)
-# 	w = vert_read('real_vert.txt')
-# 	vert_write('Vertices.txt','w', w)
-# 	vert_write('Vertices.txt','a', add_vert)
-# 	os.system('polymake --script Polar.pl')
-# 	v = vert_read('poly_polar_vert.txt')
-# os.system('polymake --script Volume.pl')
-
-#Random case
-
+def full_dimension_check():
+	flag = True
+	os.system('polymake --script Volume.pl')
+	with open('volume.txt') as volume_now:
+		vol = Fraction(volume_now.read())
+	if (vol == 0):
+		flag = False
+	return flag
 
 
 os.system('polymake --script Rand.pl')
 rand_homothety_and_symmetrisize('not_sym.txt','Vertices.txt')
 os.system('polymake --script Polar.pl')
-v = vert_read('poly_polar_vert.txt')
-vert_write('Vertices.txt','w', v)
-while(polar_check(v) != True):
-	add_vert = polar_add(v)
-	add_vert = J_multiplication(add_vert)
-	w = vert_read('real_vert.txt')
-	vert_write('Vertices.txt','w', w)
-	vert_write('Vertices.txt','a', add_vert)
-	os.system('polymake --script Polar.pl')
+if(full_dimension_check()):
 	v = vert_read('poly_polar_vert.txt')
-os.system('polymake --script Volume.pl')
-with open('volume.txt') as volume_now:
-				vol = Fraction(volume_now.read())
-volume_rec = open('vol_rec_4_10.txt', 'a')
-with open('vertnum_orig.txt') as f:
-	real_vert = (f.read()).rstrip('\n')
-volume_rec.write(real_vert)			
-volume_rec.write(" ")
-volume_rec.write(str(float(vol)))
-volume_rec.write("\n")
-volume_rec.close()
+	vert_write('Vertices.txt','w', v)
+	while(polar_check(v) != True):
+		add_vert = polar_add(v)
+		add_vert = J_multiplication(add_vert)
+		w = vert_read('real_vert.txt')
+		vert_write('Vertices.txt','w', w)
+		vert_write('Vertices.txt','a', add_vert)
+		os.system('polymake --script Polar.pl')
+		v = vert_read('poly_polar_vert.txt')
+	os.system('polymake --script Volume.pl')
+	with open('volume.txt') as volume_now:
+		vol = Fraction(volume_now.read())
+	volume_rec = open('vol_rec_4_8.txt', 'a')
+	with open('vertnum_orig.txt') as f:
+		real_vert = (f.read()).rstrip('\n')
+	volume_rec.write(real_vert)			
+	volume_rec.write(" ")
+	volume_rec.write(str(float(vol)))
+	volume_rec.write("\n")
+	volume_rec.close()
 
 

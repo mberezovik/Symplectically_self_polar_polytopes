@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use application "polytope";
 
-my $q = rand_sphere<Rational>(4,6);
+my $q = rand_sphere<Rational>(4,5);
 open(OUTPUT,  ">not_sym.txt");
 my $vertnum = scalar(@{$q->VERTICES});
 for (my $i = 0; $i < $vertnum-1;$i++){
